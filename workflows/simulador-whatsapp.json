@@ -1,0 +1,58 @@
+{
+  "name": "Simulador WhatsApp",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "dcb62a67-e084-475c-9191-d414a6dd84b7",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:5678/webhook-test/whatsapp-precios",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"object\": \"whatsapp_business_account\",\n  \"entry\": [{\n    \"changes\": [{\n      \"field\": \"messages\",\n      \"value\": {\n        \"messaging_product\": \"whatsapp\",\n        \"contacts\": [{ \"profile\": { \"name\": \"Vendedor Prueba\" }, \"wa_id\": \"5493790000099\" }],\n        \"messages\": [{\n          \"from\": \"5493790000099\",\n          \"id\": \"wamid.PRUEBA001\",\n          \"timestamp\": \"1761339600\",\n          \"type\": \"text\",\n          \"text\": { \"body\": \"Hola! ¿A cuánto se facturó el jabón líquido para ropa de 800 ml?\" }\n        }]\n      }\n    }]\n  }]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "98f9fe50-2078-4fc3-b1f0-c26e5855b3aa",
+      "name": "Simulador WhatsApp"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Simulador WhatsApp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "1c940d32-2126-43ae-8ef0-03503564fe40",
+  "meta": {},
+  "nodeGroups": [],
+  "id": "ATWyHAHndCCXhsqT",
+  "tags": []
+}
